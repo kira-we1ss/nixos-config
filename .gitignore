@@ -1,0 +1,5 @@
+result
+.direnv
+.superpowers/
+docs/
+modules/network/static-hosts.nix
