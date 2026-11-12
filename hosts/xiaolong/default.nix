@@ -15,7 +15,6 @@ in
   imports = [
     ./hardware-configuration.nix
     ./undervolt.nix
-    ./static-hosts.nix
   ];
 
   modules = {
@@ -33,6 +32,7 @@ in
     libvirtd.enable = true;
     netbird.enable = true;
     tailscale.enable = true;
+    static-hosts.enable = true;
     gnupg.enable = true;
     gaming.enable = true;
     home.enable = true;
