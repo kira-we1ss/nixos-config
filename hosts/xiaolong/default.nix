@@ -27,6 +27,7 @@ in
     audio.enable = true;
     graphics.enable = true;
     fingerprint.enable = true;
+    bluetooth.enable = true;
     performance.enable = true;
     docker.enable = true;
     libvirtd.enable = true;
@@ -43,10 +44,6 @@ in
   networking.hostName = "xiaolong";
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;
-
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
