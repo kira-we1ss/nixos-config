@@ -1,30 +1,41 @@
-/* Dark purple theme, loosely based on Rosé Pine:
-   base #191724 | surface #1f1d2e | overlay #26233a
-   muted #6e6a86 | subtle #908caa | text #e0def4
-   iris (accent) #c4a7e7 | highlight #403d52
+/* Catppuccin Mocha Mauve:
+   base #1e1e2e | mantle #181825 | overlay #313244
+   text #cdd6f4 | subtext #a6adc8 | accent #cba6f7
 */
 
 button {
-    margin: 2px;
+    margin: 0;
+    border: 1px solid transparent;
     border-radius: 6px;
+    outline: none;
+    box-shadow: none;
+    transition: background-color 150ms ease-in-out, border-color 150ms ease-in-out;
 }
 
 button:hover {
-    background-color: rgba(196, 167, 231, 0.14);
+    background-color: rgba(203, 166, 247, 0.14);
+    border-color: rgba(203, 166, 247, 0.55);
 }
 
-/* Panel itself */
-#panel-top {
-    background: #191724;
-    color: #e0def4;
-    border-bottom: 1px solid #26233a;
+/* Keep the layer-shell window transparent to avoid black square corners. */
+window#panel-top {
+    background-color: transparent;
+    border: none;
+}
+
+#panel-top > box {
+    background: #1e1e2e;
+    color: #cdd6f4;
+    border: none;
+    border-bottom: 1px solid #313244;
+    border-radius: 0;
 }
 
 /* Clock, centered */
 #clock {
     font-family: monospace;
     font-size: 14px;
-    color: #c4a7e7;
+    color: #cba6f7;
     font-weight: bold;
 }
 
@@ -32,18 +43,19 @@ button:hover {
 #task-box {
     padding-left: 6px;
     padding-right: 6px;
-    border-radius: 6px;
+    border-radius: 8px;
+    transition: background-color 150ms ease-in-out;
 }
 
 #task-box-focused {
-    background-color: rgba(196, 167, 231, 0.16);
+    background-color: rgba(203, 166, 247, 0.20);
     padding-left: 6px;
     padding-right: 6px;
-    border-radius: 6px;
+    border-radius: 8px;
 }
 
 #task-box:hover {
-    background-color: rgba(196, 167, 231, 0.08);
+    background-color: rgba(203, 166, 247, 0.10);
 }
 
 /* System tray */
@@ -56,28 +68,49 @@ button:hover {
     padding: 2px 4px;
 }
 
-/* Controls popup (brightness / volume / battery / exit menu) */
-#controls-window {
+#notifications {
+    padding: 0 4px;
+    background: transparent;
+    color: #cdd6f4;
+}
+
+#notifications:hover {
+    background: rgba(203, 166, 247, 0.10);
+}
+
+#notifications-label {
+    color: #cba6f7;
+}
+
+window#controls-window {
+    border: none;
+    background: transparent;
+    color: #cdd6f4;
+}
+
+#controls-window box {
+    background-color: #181825;
+}
+
+#controls-window > eventbox > box {
+    border: 1px solid #313244;
     border-radius: 12px;
-    background: #1f1d2e;
-    color: #e0def4;
-    border: 1px solid #403d52;
 }
 
 #controls-window scale value {
-    color: #e0def4;
+    color: #cdd6f4;
 }
 
 #controls-window scale trough {
-    background-color: #26233a;
+    background-color: #313244;
     border-radius: 6px;
 }
 
 #controls-window scale trough highlight {
-    background-color: #c4a7e7;
+    background-color: #cba6f7;
     border-radius: 6px;
 }
 
 #controls-window button:hover {
-    background-color: rgba(196, 167, 231, 0.14);
+    background-color: rgba(203, 166, 247, 0.14);
 }

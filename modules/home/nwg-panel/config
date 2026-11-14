@@ -6,7 +6,7 @@
     "position": "top",
     "controls": "right",
     "width": 80,
-    "height": 30,
+    "height": 28,
     "homogeneous": true,
     "margin-top": 0,
     "margin-bottom": 0,
@@ -41,20 +41,14 @@
       "leave-closes": true,
       "click-closes": false,
       "css-name": "controls-window",
-      "custom-items": [
-        {
-          "name": "Panel settings",
-          "icon": "nwg-panel",
-          "cmd": "nwg-panel-config"
-        }
-      ],
+      "custom-items": [],
       "menu": {
         "name": "Exit",
         "icon": "system-shutdown-symbolic",
         "items": [
           {
             "name": "Lock",
-            "cmd": "swaylock -f -c 000000"
+            "cmd": "quickshell -c kath-lock"
           },
           {
             "name": "Logout",
@@ -145,13 +139,13 @@
       "label-css-name": "",
       "interval": 1
     },
-    "button-sample": {
-      "command": "notify-send 'sample button'",
-      "icon": "view-grid",
-      "label": "",
-      "label-position": "right",
-      "css-name": "button-custom",
-      "icon-size": 16
+    "notifications": {
+      "root-css-name": "notifications",
+      "css-name": "notifications-label",
+      "icon-size": 16,
+      "interval": 1,
+      "always-show-icon": true,
+      "on-left-click": "swaync-client -t -sw"
     },
     "menu-start": "off",
     "exclusive-zone": true,
