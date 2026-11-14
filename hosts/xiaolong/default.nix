@@ -68,6 +68,7 @@ in
     enable = true;
     tunMode.enable = true;
   };
+  programs.kdeconnect.enable = true;
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
   programs.ssh.extraConfig = ''
