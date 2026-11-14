@@ -1,0 +1,114 @@
+:root {
+  --noti-bg: #1e1e2e;
+  --noti-bg-focus: #313244;
+  --cc-bg: #181825;
+  --cc-border: #313244;
+  --text-color: #cdd6f4;
+  --text-color-disabled: #a6adc8;
+}
+
+* {
+  font-family: "Noto Sans";
+  color: #cdd6f4;
+}
+
+notificationwindow,
+blankwindow,
+blankwindow#control-center-window,
+.blank-window {
+  background: transparent;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.notification-row,
+.notification-row:hover,
+.notification-row:focus {
+  outline: none;
+  background: transparent;
+}
+
+.notification {
+  margin: 8px;
+  padding: 0;
+  border: 1px solid #313244;
+  border-radius: 12px;
+  background: #1e1e2e;
+  transition: background-color 200ms ease-in-out, border-color 200ms ease-in-out;
+}
+
+.notification:hover {
+  border-color: #cba6f7;
+}
+
+.notification-content {
+  padding: 12px;
+}
+
+.summary {
+  color: #cba6f7;
+  font-weight: bold;
+}
+
+.body {
+  color: #cdd6f4;
+}
+
+.close-button {
+  margin: 6px;
+  border-radius: 8px;
+  background: #313244;
+  color: #cdd6f4;
+}
+
+.close-button:hover {
+  background: #cba6f7;
+  color: #1e1e2e;
+}
+
+.control-center {
+  margin: 6px;
+  border: 1px solid #313244;
+  border-radius: 16px;
+  background: #181825;
+  color: #cdd6f4;
+  box-shadow: none;
+}
+
+.widget-title {
+  margin: 12px;
+  color: #cba6f7;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.widget-title button {
+  border: 1px solid #313244;
+  border-radius: 8px;
+  background: #1e1e2e;
+  color: #cdd6f4;
+}
+
+.widget-title button:hover {
+  border-color: #cba6f7;
+  background: #313244;
+}
+
+.widget-dnd {
+  margin: 12px;
+  color: #cdd6f4;
+}
+
+.widget-dnd > switch {
+  border-radius: 12px;
+  background: #313244;
+}
+
+.widget-dnd > switch:checked {
+  background: #cba6f7;
+}
+
+.widget-dnd > switch slider {
+  border-radius: 50%;
+  background: #cdd6f4;
+}
