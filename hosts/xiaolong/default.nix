@@ -23,7 +23,7 @@ in
     overlays.enable = true;
     desktop.enable = true;
     niri.enable = true;
-    plasma.enable = true;
+    plasma.enable = false;
     audio.enable = true;
     graphics.enable = true;
     fingerprint.enable = true;
