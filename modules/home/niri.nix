@@ -169,5 +169,11 @@ in
     services.network-manager-applet.enable = true;
     services.swayidle.enable = false;
     services.polkit-gnome.enable = true;
+    services.udiskie = {
+      enable = true;
+      automount = true;
+      notify = true;
+      tray = "auto";
+    };
   };
 }

@@ -13,7 +13,6 @@ let
 in
 {
   imports = [
-    ./hardware-configuration.nix
     ./undervolt.nix
   ];
 
@@ -33,7 +32,7 @@ in
     libvirtd.enable = true;
     netbird.enable = true;
     tailscale.enable = true;
-    static-hosts.enable = true;
+    # static-hosts.enable = true; # Restore together with the local module.
     gnupg.enable = true;
     gaming.enable = true;
     home.enable = true;
@@ -76,7 +75,24 @@ in
   '';
   programs.nix-ld.enable = true;
 
-  services.flatpak.enable = true;
+  services.flatpak = {
+    enable = true;
+    packages = map (appId: { inherit appId; origin = "flathub"; }) [
+      "ai.lmstudio.lm-studio"
+      "app.twintaillauncher.ttl"
+      "com.anydesk.Anydesk"
+      "com.dec05eba.gpu_screen_recorder"
+      "com.github.tchx84.Flatseal"
+      "dev.vencord.Vesktop"
+      "io.github.dvlv.boxbuddyrs"
+      "io.github.schwarzen.colormydesktop"
+      "net.davidotek.pupgui2"
+      "net.supertuxkart.SuperTuxKart"
+      "org.remmina.Remmina"
+      "org.signal.Signal"
+      "org.telegram.desktop"
+    ];
+  };
   services.printing.enable = true;
   services.resolved.enable = false;
 

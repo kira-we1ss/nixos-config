@@ -19,6 +19,10 @@ in
       wayland.enable = true;
     };
 
+    # UDisks provides mounting; GVFS exposes removable media to GTK apps.
+    services.udisks2.enable = true;
+    services.gvfs.enable = true;
+
     fonts.packages = with pkgs; [
       nerd-fonts.jetbrains-mono
       nerd-fonts.fira-code

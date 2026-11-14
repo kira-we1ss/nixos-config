@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, kimi-code, ... }:
 
 {
   modules = {
@@ -16,6 +16,12 @@
     thunderbird
     qbittorrent
     davinci-resolve
+    csview
+    gsmartcontrol
+    poppler-utils
+    scrcpy
+    uv
+    kimi-code.packages.${pkgs.stdenv.hostPlatform.system}.kimi-code
   ];
 
   programs.home-manager.enable = true;

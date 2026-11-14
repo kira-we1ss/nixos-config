@@ -14,6 +14,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    disko = {
+      url = "github:nix-community/disko/latest";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.8.0";
+    kimi-code = {
+      # Same revision as the current nix profile installation.
+      url = "github:MoonshotAI/kimi-code/f8e15c7a9be44fe4e0361a4ce57eaf690e05476a";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs =
@@ -22,11 +32,14 @@
       home-manager,
       helium,
       nixpkgs-unstable,
+      disko,
+      nix-flatpak,
+      kimi-code,
       ...
     }:
     let
       mkHost =
-        name:
+        name: extraModules:
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
@@ -34,12 +47,24 @@
           };
           modules = [
             home-manager.nixosModules.home-manager
+            nix-flatpak.nixosModules.nix-flatpak
+            { home-manager.extraSpecialArgs = { inherit kimi-code; }; }
             ./modules
             ./hosts/${name}
-          ];
+          ] ++ extraModules;
         };
     in
     {
-      nixosConfigurations.xiaolong = mkHost "xiaolong";
+      nixosConfigurations = {
+        # Current Btrfs installation. Rebuilds of this target stay unchanged.
+        xiaolong = mkHost "xiaolong" [ ./hosts/xiaolong/hardware-configuration.nix ];
+
+        # Clean ZFS installation via disko-install; does not affect xiaolong.
+        xiaolong-zfs = mkHost "xiaolong" [
+          disko.nixosModules.disko
+          ./hosts/xiaolong/disko.nix
+          ./hosts/xiaolong/zfs.nix
+        ];
+      };
     };
 }
