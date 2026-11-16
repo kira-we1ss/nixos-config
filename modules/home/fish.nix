@@ -11,7 +11,7 @@ in
       enable = true;
       shellAliases = {
         zed = "zeditor";
-        rebuild = "sudo nixos-rebuild switch --flake path:/home/kweiss/Projects/nixos-config#xiaolong --log-format internal-json -v |& nom --json";
+        rebuild = "sudo nixos-rebuild switch --flake path:/home/kweiss/Projects/nixos-config#xiaolong-zfs --log-format internal-json -v |& nom --json";
         update = "sudo nix flake update --flake path:/home/kweiss/Projects/nixos-config --log-format internal-json -v |& nom --json";
         cleanup = "sudo nix-collect-garbage -d";
         profile_upgrade = "nix profile upgrade --all --log-format internal-json -v |& nom --json";

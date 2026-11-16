@@ -87,9 +87,13 @@ in
       gtk.enable = true;
     };
 
+    dconf.settings."org/gnome/desktop/wm/preferences".button-layout = ":minimize,maximize,close";
+
     gtk = {
       enable = true;
       colorScheme = "dark";
+      gtk3.extraConfig.gtk-decoration-layout = ":minimize,maximize,close";
+      gtk4.extraConfig.gtk-decoration-layout = ":minimize,maximize,close";
       theme = {
         name = "catppuccin-mocha-mauve-standard";
         package = catppuccinGtk;

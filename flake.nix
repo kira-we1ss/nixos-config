@@ -19,6 +19,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.8.0";
+    bootvine = {
+      url = "git+https://codeberg.org/wvhulle/bootvine";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     kimi-code = {
       # Same revision as the current nix profile installation.
       url = "github:MoonshotAI/kimi-code/f8e15c7a9be44fe4e0361a4ce57eaf690e05476a";
@@ -35,6 +39,7 @@
       disko,
       nix-flatpak,
       kimi-code,
+      bootvine,
       ...
     }:
     let
@@ -48,6 +53,7 @@
           modules = [
             home-manager.nixosModules.home-manager
             nix-flatpak.nixosModules.nix-flatpak
+            bootvine.nixosModules.default
             { home-manager.extraSpecialArgs = { inherit kimi-code; }; }
             ./modules
             ./hosts/${name}

@@ -32,7 +32,7 @@ in
     libvirtd.enable = true;
     netbird.enable = true;
     tailscale.enable = true;
-    # static-hosts.enable = true; # Restore together with the local module.
+    static-hosts.enable = true;
     gnupg.enable = true;
     gaming.enable = true;
     home.enable = true;
@@ -74,25 +74,8 @@ in
     IdentityAgent ~/.bitwarden-ssh-agent.sock
   '';
   programs.nix-ld.enable = true;
-
-  services.flatpak = {
-    enable = true;
-    packages = map (appId: { inherit appId; origin = "flathub"; }) [
-      "ai.lmstudio.lm-studio"
-      "app.twintaillauncher.ttl"
-      "com.anydesk.Anydesk"
-      "com.dec05eba.gpu_screen_recorder"
-      "com.github.tchx84.Flatseal"
-      "dev.vencord.Vesktop"
-      "io.github.dvlv.boxbuddyrs"
-      "io.github.schwarzen.colormydesktop"
-      "net.davidotek.pupgui2"
-      "net.supertuxkart.SuperTuxKart"
-      "org.remmina.Remmina"
-      "org.signal.Signal"
-      "org.telegram.desktop"
-    ];
-  };
+  services.bootvine.enable = true;
+  services.flatpak.enable = true;
   services.printing.enable = true;
   services.resolved.enable = false;
 

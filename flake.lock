@@ -1,5 +1,42 @@
 {
   "nodes": {
+    "bootvine": {
+      "inputs": {
+        "crane": "crane",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay"
+      },
+      "locked": {
+        "lastModified": 1794668284,
+        "narHash": "sha256-maMtdOgjIRWUpsNEPvmhmR0iHPAGy45IMUjBKImYZFU=",
+        "ref": "refs/heads/main",
+        "rev": "b13a132a95c8792756d64853c490787f0ae08d5f",
+        "revCount": 134,
+        "type": "git",
+        "url": "https://codeberg.org/wvhulle/bootvine"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/wvhulle/bootvine"
+      }
+    },
+    "crane": {
+      "locked": {
+        "lastModified": 1793836618,
+        "narHash": "sha256-TREenflwEjxOSq292FYwbc3kEm7TDRtXCZRNWEdjBmg=",
+        "owner": "ipetkov",
+        "repo": "crane",
+        "rev": "79fd63528501446749c09f08cad486a58c7d173e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ipetkov",
+        "repo": "crane",
+        "type": "github"
+      }
+    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -133,6 +170,7 @@
     },
     "root": {
       "inputs": {
+        "bootvine": "bootvine",
         "disko": "disko",
         "helium": "helium",
         "home-manager": "home-manager",
@@ -140,6 +178,27 @@
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable"
+      }
+    },
+    "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "bootvine",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1794646145,
+        "narHash": "sha256-rpqDyUM/d5fACYB8W+wKxxO57ICWjjalzb2X25oFFkY=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "5b87ee0513c29127a01ad06e9cb362ea5ce91e78",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
       }
     }
   },
