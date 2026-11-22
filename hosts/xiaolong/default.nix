@@ -143,7 +143,7 @@ in
     socat
     jellyfin-desktop
     jellyfin-rpc
-    # discord
+    discord
     bun
     playwright-driver.browsers
     figma-linux
