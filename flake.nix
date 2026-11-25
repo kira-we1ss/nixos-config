@@ -73,14 +73,20 @@
 
       mkDarwin =
         name:
+        let
+          unstable = import nixpkgs-unstable {
+            system = "aarch64-darwin";
+            config.allowUnfree = true;
+          };
+        in
         nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           specialArgs = {
-            inherit home-manager-master kimi-code nixpkgs-unstable;
+            inherit home-manager-master kimi-code unstable;
           };
           modules = [
             home-manager.darwinModules.home-manager
-            { home-manager.extraSpecialArgs = { inherit kimi-code nixpkgs-unstable; }; }
+            { home-manager.extraSpecialArgs = { inherit kimi-code unstable; }; }
             ./hosts/${name}
           ];
         };

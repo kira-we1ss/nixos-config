@@ -2,15 +2,11 @@
   lib,
   pkgs,
   home-manager-master,
-  nixpkgs-unstable,
+  unstable,
   ...
 }:
 
 let
-  unstable = import nixpkgs-unstable {
-    system = pkgs.stdenv.hostPlatform.system;
-    config.allowUnfree = true;
-  };
   mtrPacketPath = "/usr/local/libexec/mtr-packet";
 in
 {
@@ -42,7 +38,6 @@ in
   environment.shells = [ pkgs.fish ];
 
   system.activationScripts.postActivation.text = ''
-    dscl . -create /Users/kweiss UserShell ${pkgs.fish}/bin/fish
     /usr/bin/install -d -o root -g wheel -m 0755 /usr/local/libexec
     /usr/bin/install -o root -g wheel -m 4755 ${pkgs.mtr}/bin/mtr-packet ${mtrPacketPath}
   '';
@@ -76,6 +71,11 @@ in
   };
 
   system.defaults.NSGlobalDomain.AppleInterfaceStyle = "Dark";
+  system.defaults.dock = {
+    autohide = true;
+    show-recents = false;
+    mru-spaces = false;
+  };
   system.defaults.finder.AppleShowAllFiles = true;
 
   fonts.packages = with pkgs; [
