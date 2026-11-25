@@ -1,11 +1,20 @@
 {
-  description = "Personal NixOS devices";
+  description = "Personal NixOS and nix-darwin devices";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
+    };
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    home-manager-master = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
     # 2026-10-19: removed nix-cachyos-kernel (xddxdd) - maintainer's servers
     # compromised (incl. attic signing key), see repo issue #110
@@ -33,7 +42,9 @@
   outputs =
     {
       nixpkgs,
+      nix-darwin,
       home-manager,
+      home-manager-master,
       helium,
       nixpkgs-unstable,
       disko,
@@ -59,6 +70,20 @@
             ./hosts/${name}
           ] ++ extraModules;
         };
+
+      mkDarwin =
+        name:
+        nix-darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          specialArgs = {
+            inherit home-manager-master kimi-code nixpkgs-unstable;
+          };
+          modules = [
+            home-manager.darwinModules.home-manager
+            { home-manager.extraSpecialArgs = { inherit kimi-code nixpkgs-unstable; }; }
+            ./hosts/${name}
+          ];
+        };
     in
     {
       nixosConfigurations = {
@@ -72,5 +97,7 @@
           ./hosts/xiaolong/zfs.nix
         ];
       };
+
+      darwinConfigurations.sunday = mkDarwin "sunday";
     };
 }
