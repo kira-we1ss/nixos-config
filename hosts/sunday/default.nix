@@ -38,6 +38,8 @@ in
   environment.shells = [ pkgs.fish ];
 
   system.activationScripts.postActivation.text = ''
+    /bin/mkdir -p /Library/Preferences/FeatureFlags/Domain
+    /usr/bin/defaults write /Library/Preferences/FeatureFlags/Domain/TCC AX_TRANSPARENCY_INDICATOR -dict Enabled -bool false
     /usr/bin/install -d -o root -g wheel -m 0755 /usr/local/libexec
     /usr/bin/install -o root -g wheel -m 4755 ${pkgs.mtr}/bin/mtr-packet ${mtrPacketPath}
   '';
