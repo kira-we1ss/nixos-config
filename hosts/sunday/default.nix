@@ -72,7 +72,7 @@ in
 
   system.defaults.NSGlobalDomain.AppleInterfaceStyle = "Dark";
   system.defaults.dock = {
-    autohide = true;
+    autohide = false;
     show-recents = false;
     mru-spaces = false;
   };
