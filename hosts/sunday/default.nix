@@ -36,6 +36,10 @@ in
   security.pam.services.sudo_local.touchIdAuth = true;
 
   environment.shells = [ pkgs.fish ];
+  environment.systemPath = [
+    "/opt/homebrew/bin"
+    "/opt/homebrew/sbin"
+  ];
 
   system.activationScripts.postActivation.text = ''
     /bin/mkdir -p /Library/Preferences/FeatureFlags/Domain
